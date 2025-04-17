@@ -43,7 +43,7 @@ variable "db_username" {
 variable "db_password" {
   type        = string
   sensitive   = true
-  default     = "admin@123"
+  default     = "admin123"
   description = "Password for the database"
 }
 
