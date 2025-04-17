@@ -51,9 +51,9 @@ jobs:
         id: plan_report
         run: |
           echo "#### Terraform Plan Output" >> plan.txt
-          echo "```terraform" >> plan.md
+          echo "```terraform" >> plan.txt
           echo "$(terraform plan -no-color)" >> plan.txt
-          echo "```" >> plan.md
+          echo "```" >> plan.txt
         working-directory: ./
  
       - name: Comment Plan to Pull Request
@@ -65,7 +65,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const fs = require('fs');
-            const planOutput = fs.readFileSync('./plan.md', 'utf8');
+            const planOutput = fs.readFileSync('./plan.txt', 'utf8');
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
