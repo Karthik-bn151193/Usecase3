@@ -38,6 +38,11 @@ jobs:
           unzip tflint_linux_amd64.zip
           sudo mv tflint /usr/local/bin/
           tflint --version
+
+      - name: Run TFlint
+        id: tflint
+        run: tflint --init && tflint -f compact
+        working-directory: ./
  
       - name: Initialize Terraform
         id: init
