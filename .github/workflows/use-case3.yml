@@ -41,8 +41,9 @@ jobs:
 
       - name: Run TFlint
         id: tflint
-        run: tflint --init && tflint -f compact
+        run: tflint --init --terraform-required-version ">= 1.11.4" && tflint -f compact
         working-directory: ./
+        
  
       - name: Initialize Terraform
         id: init
