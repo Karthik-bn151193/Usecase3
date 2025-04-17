@@ -49,6 +49,6 @@ variable "db_password" {
 
 variable "db_instance_type" {
   type        = string
-  default     = "db.t2.micro"
+  default     = "db.t3.micro"
   description = "Instance type for the RDS instance"
 }
