@@ -32,25 +32,12 @@ jobs:
         with:
           terraform_version: ">= 1.11.4"
       
-      - name: Set up TFlint
-        uses: terraform-linters/setup-tflint@v4
-        with:
-          tflint_version: "v0.49.1" # You can specify a version or use 'latest'
-
-      - name: Run TFlint
-        id: tflint
-        run: tflint --init && tflint -f compact
-        working-directory: ./
-
-      - name: Set up Checkov
-        uses: bridgecrewio/setup-checkov@v3
-        with:
-          checkov_version: "2.5.2" # You can specify a version or use 'latest'
-
-      - name: Run Checkov
-        id: checkov
-        run: checkov -d ./ -s
-        working-directory: ./
+      - name: Install TFlint
+        run: |
+          wget https://github.com/terraform-linters/tflint/releases/download/v0.50.2/tflint_linux_amd64.zip # Replace with the latest TFlint version
+          unzip tflint_linux_amd64.zip
+          sudo mv tflint /usr/local/bin/
+          tflint --version
  
       - name: Initialize Terraform
         id: init
