@@ -39,9 +39,12 @@ jobs:
           sudo mv tflint /usr/local/bin/
           tflint --version
 
+      - name: Verify TFlint Version
+        run: tflint --version
+
       - name: Run TFlint
         id: tflint
-        run: tflint --init --terraform-required-version ">= 1.11.4" && tflint -f compact
+        run: tflint --init && tflint -f compact # Removed --terraform-required-version for compatibility
         working-directory: ./
         
  
